@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('watchlists', function (Blueprint $table) {
+      Schema::create('watchlists', function (Blueprint $table) {
+
     $table->id();
 
     $table->foreignId('user_id')
           ->constrained()
-          ->onDelete('cascade');
+          ->cascadeOnDelete();
 
     $table->foreignId('country_id')
-          ->constrained('countries')
-          ->onDelete('cascade');
+          ->constrained()
+          ->cascadeOnDelete();
 
     $table->timestamps();
+
 });
     }
 

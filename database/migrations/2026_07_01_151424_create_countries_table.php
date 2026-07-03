@@ -12,22 +12,39 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
+
     $table->id();
 
     $table->string('country_name');
-    $table->string('country_code', 10)->unique();
 
-    $table->string('currency')->nullable();
+    $table->string('country_code',10)->unique();
+
+    $table->string('capital')->nullable();
 
     $table->string('region')->nullable();
 
+    $table->string('subregion')->nullable();
+
+    $table->string('currency')->nullable();
+
+    $table->string('currency_symbol')->nullable();
+
+    $table->string('language')->nullable();
+
     $table->bigInteger('population')->nullable();
 
-    $table->decimal('gdp', 20, 2)->nullable();
+    $table->decimal('gdp',20,2)->nullable();
 
-    $table->decimal('inflation_rate', 8, 2)->nullable();
+    $table->decimal('inflation_rate',8,2)->nullable();
+
+    $table->decimal('latitude',10,6)->nullable();
+
+    $table->decimal('longitude',10,6)->nullable();
+
+    $table->string('flag')->nullable();
 
     $table->timestamps();
+
 });
     }
 

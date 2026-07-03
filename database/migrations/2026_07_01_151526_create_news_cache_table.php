@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('news_cache', function (Blueprint $table) {
+
     $table->id();
 
     $table->foreignId('country_id')
           ->nullable()
-          ->constrained('countries')
-          ->onDelete('cascade');
+          ->constrained()
+          ->cascadeOnDelete();
 
     $table->string('title');
 
@@ -25,11 +26,18 @@ return new class extends Migration
 
     $table->string('source')->nullable();
 
+    $table->string('url')->nullable();
+
+    $table->string('image')->nullable();
+
+    $table->string('category')->nullable();
+
     $table->string('sentiment')->nullable();
 
     $table->timestamp('published_at')->nullable();
 
     $table->timestamps();
+
 });
     }
 
